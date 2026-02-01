@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>For Dandan ❤️</title>
+    <link rel="stylesheet" href="style.css">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;700&family=Playfair+Display:wght@400;700&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/turn.js/3/turn.min.css">
+        <link rel="icon" href="heartcursor.png" type="image/x-icon">
+
+</head>
+
+<body>
+    <div class="hearts-bg" id="heartsContainer"></div>
+
+    <div class="music-player">
+        <button class="music-btn" id="musicToggle"><i class="fas fa-play"></i></button>
+    </div>
+
+    <div class="page-counter" id="pageCounter">Page 1</div>
+
+    <div class="container">
+        <div class="book-container">
+            <div id="flipbook">
+
+                <!-- Page 1: Cover -->
+                <div class="page">
+                    <div class="page-inner">
+                        <h1 class="book-title">Our Love Story</h1>
+                        <div class="subtitle">Volume I: The Beginning</div>
+                        <div class="dedication">
+                            To my dearest love,<br>
+                            Every moment with you writes a new page in our story.<br>
+                            This is just the beginning of our forever.
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Page 2 -->
+                <div class="page">
+                    <div class="page-inner">
+                        <h2 class="chapter-title">How It All Began</h2>
+                        <div class="memory-date">February 14, 2023</div>
+                        <p class="page-text">I still remember the first time our eyes met...</p>
+                        <div class="love-quote">"Some love stories aren't epic novels..."</div>
+                        <div class="page-number">1</div>
+                    </div>
+                </div>
+
+                <!-- Page 3 -->
+                <div class="page">
+                    <div class="page-inner">
+                        <h2 class="chapter-title">Our First Date</h2>
+                        <div class="memory-date">March 3, 2023</div>
+                        <p class="page-text">You showed up with flowers that were slightly wilted...</p>
+                        <div class="love-quote">"I loved you from the first 'hello'..."</div>
+                        <div class="page-number">2</div>
+                    </div>
+                </div>
+
+                <!-- Page 4 -->
+                <div class="page">
+                    <div class="page-inner">
+                        <h2 class="chapter-title">Our First Date</h2>
+                        <div class="memory-date">March 4, 2023</div>
+                        <p class="page-text">You showed up with flowers that were slightly wilted...</p>
+                        <div class="love-quote">"I loved you from the first 'hello'..."</div>
+                        <div class="page-number">4</div>
+                    </div>
+                </div>
+
+                <!-- Page 5 -->
+                <div class="page">
+                    <div class="page-inner">
+                        <h2 class="chapter-title">Our First Date</h2>
+                        <div class="memory-date">March 3, 2023</div>
+                        <p class="page-text">You showed up with flowers that were slightly wilted...</p>
+                        <div class="love-quote">"I loved you from the first 'hello'..."</div>
+                        <div class="page-number">5</div>
+                    </div>
+                </div>
+
+                <!-- Closing Page / Back Cover -->
+                <div class="page">
+                    <div class="page-inner">
+                        <h1 class="book-title">The End</h1>
+                        <div class="subtitle">Until Our Next Chapter...</div>
+                        <div class="dedication">
+                            Thank you for reading our story.<br>
+                            Every moment with you is a new page in our hearts.
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="navigation">
+                <button id="prev-btn" class="nav-btn"><i class="fas fa-chevron-left"></i></button>
+                <button id="next-btn" class="nav-btn"><i class="fas fa-chevron-right"></i></button>
+            </div>
+        </div>
+    </div>
+    <audio id="musicClickSound" preload="auto">
+        <source src="audio/isnt1.mp3" type="audio/mpeg">
+    </audio>
+    <audio id="pageTurnSound" preload="auto">
+        <source src="audio/papers.mp3" type="audio/mpeg">
+    </audio>
+    <audio id="backgroundMusic" loop>
+        <source src="audio/background-music.mp3" type="audio/mpeg">
+        Your browser does not support the audio element.
+    </audio>
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/turn.js/3/turn.min.js"></script>
+    <script src="script.js"></script>
+
+</body>
+
+</html>
