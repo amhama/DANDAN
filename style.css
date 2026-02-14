@@ -9,7 +9,8 @@ body {
     overflow: hidden;
     height: 100vh;
     background: #000;
-        cursor: url(autocursor.png), auto;
+    cursor: url(autocursor.png), auto;
+    background: linear-gradient(135deg, #ffafcc 0%, #ffc8dd 25%, #ffafcc 100%);
 
 }
 
@@ -56,7 +57,6 @@ body {
     align-items: center;
     position: relative;
     z-index: 1;
-    background: linear-gradient(135deg, #ffafcc 0%, #ffc8dd 25%, #ffafcc 100%);
     overflow: hidden;
 }
 
@@ -78,6 +78,7 @@ body {
     0% {
         transform: translate(0, 0) rotate(0deg);
     }
+
     100% {
         transform: translate(100px, 100px) rotate(360deg);
     }
@@ -90,7 +91,7 @@ body {
     max-height: 800px;
     position: relative;
     filter: drop-shadow(0 20px 40px rgba(255, 107, 157, 0.4));
-        animation: float 6s ease-in-out infinite;
+    animation: float 6s ease-in-out infinite;
 
 }
 
@@ -101,8 +102,8 @@ body {
     left: -10px;
     right: -10px;
     bottom: -10px;
-    background: linear-gradient(45deg, 
-        #ff6b9d, #ff8fab, #ffafcc, #ffc8dd, #ffafcc, #ff8fab);
+    background: linear-gradient(45deg,
+            #ff6b9d, #ff8fab, #ffafcc, #ffc8dd, #ffafcc, #ff8fab);
     border-radius: 20px;
     z-index: -1;
     opacity: 0.6;
@@ -114,19 +115,25 @@ body {
         opacity: 0.4;
         filter: blur(10px);
     }
+
     100% {
         opacity: 0.7;
         filter: blur(20px);
     }
 }
+
 @keyframes float {
-    0%, 100% {
+
+    0%,
+    100% {
         transform: translateY(0) rotate(0.2deg);
     }
+
     50% {
         transform: translateY(-10px) rotate(-0.2deg);
     }
 }
+
 .sparkles {
     position: absolute;
     width: 100%;
@@ -146,15 +153,19 @@ body {
 }
 
 @keyframes twinkle {
-    0%, 100% {
+
+    0%,
+    100% {
         opacity: 0;
         transform: scale(0.5);
     }
+
     50% {
         opacity: 1;
         transform: scale(1);
     }
 }
+
 #flipbook {
     width: 100%;
     height: 100%;
@@ -183,7 +194,7 @@ body {
     background-image: repeating-linear-gradient(to bottom,
             transparent 0px,
             transparent 29px,
-            #ffc0cb34 30px);
+            #ffc0cb45 30px);
     background-size: 100% 30px;
 }
 
@@ -360,106 +371,95 @@ body {
     text-align: center;
 }
 
+.desktop-popup {
+    position: fixed;
+    inset: 0;
+    background: transparent;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    z-index: 9999;
+}
+
+.desktop-popup.show {
+    display: flex;
+}
+
+.desktop-popup-box {
+    background: white;
+    padding: 35px 40px;
+    border-radius: 25px;
+    text-align: center;
+    max-width: 320px;
+    box-shadow: 0 20px 50px rgba(255, 107, 157, 0.35);
+    animation: popupFloat 0.5s ease;
+}
+
+.desktop-popup.show~* {
+    display: none !important;
+}
+
+.desktop-popup-box h2 {
+    font-family: 'Dancing Script', cursive;
+    color: #ff6b9d;
+    font-size: 2em;
+    margin-bottom: 10px;
+}
+
+.desktop-popup-box p {
+    color: #5a3d5c;
+    line-height: 1.6;
+    margin-bottom: 20px;
+}
+
+.desktop-popup-box button {
+    border: none;
+    background: linear-gradient(135deg, #ff6b9d, #ff8fab);
+    color: white;
+    padding: 10px 22px;
+    border-radius: 20px;
+    cursor: pointer;
+    font-family: 'Dancing Script', cursive;
+    font-size: 1.1em;
+    transition: 0.25s;
+}
+
+.desktop-popup-box button:hover {
+    transform: scale(1.08);
+}
+
+@keyframes popupFloat {
+    from {
+        opacity: 0;
+        transform: translateY(25px) scale(0.9);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+}
+
+
 @media screen and (max-width:768px) {
+
+    .hearts-bg,
+    .music-player,
+    .page-counter,
+    .container {
+        display: none !important;
+    }
+
+    #desktopPopup {
+        display: flex !important;
+        position: fixed;
+        inset: 0;
+        align-items: center;
+        justify-content: center;
+        z-index: 99999;
+    }
+
     body {
-        transform: rotate(-90deg);
-        transform-origin: left top;
-        width: 100vh;
-        height: 100vw;
-        overflow-x: hidden;
-        position: absolute;
-        top: 100%;
-        left: 0;
+        overflow: hidden;
     }
-
-    .book-container {
-        width: 95%;
-        height: 90%;
-    }
-
-    .book-title {
-        font-size: 3em;
-    }
-
-    .subtitle {
-        font-size: 1.5em;
-    }
-
-    .chapter-title {
-        font-size: 2.2em;
-    }
-
-    .page-text {
-        font-size: 1.1em;
-        padding: 0 5px;
-    }
-
-    .love-quote {
-        font-size: 1.3em;
-        padding: 15px;
-    }
-
-    .nav-btn {
-        width: 50px;
-        height: 50px;
-        font-size: 20px;
-    }
-
-    .navigation {
-        gap: 20px;
-        bottom: -50px;
-    }
-
-    .page-counter {
-        bottom: 100px;
-        font-size: 1.1em;
-        padding: 6px 15px;
-    }
-}
-
-@media screen and (max-width:480px) {
-    .book-title {
-        font-size: 2.5em;
-    }
-
-    .chapter-title {
-        font-size: 1.8em;
-    }
-
-    .page-text {
-        font-size: 1em;
-    }
-
-    .nav-btn {
-        width: 40px;
-        height: 40px;
-        font-size: 18px;
-    }
-
-    .navigation {
-        gap: 15px;
-        bottom: -40px;
-    }
-
-    .page-inner {
-        padding: 20px;
-    }
-}
-
-/* Custom scrollbar */
-::-webkit-scrollbar {
-    width: 8px;
-}
-
-::-webkit-scrollbar-track {
-    background: rgba(255, 182, 193, 0.1);
-}
-
-::-webkit-scrollbar-thumb {
-    background: linear-gradient(to bottom, #ff8fab, #ff6b9d);
-    border-radius: 4px;
-}
-
-::-webkit-scrollbar-thumb:hover {
-    background: linear-gradient(to bottom, #ff6b9d, #ff8fab);
 }

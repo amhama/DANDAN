@@ -15,13 +15,13 @@ function createHearts() {
 function initBook() {
     const flipbook = $('#flipbook');
     const pageSound = document.getElementById('pageTurnSound');
-    const bgMusic = document.getElementById('backgroundMusic'); // Make sure this ID exists in HTML!
+    const bgMusic = document.getElementById('backgroundMusic'); 
     const musicToggle = document.getElementById('musicToggle');
     const pageCounter = document.getElementById('pageCounter');
     const prevBtn = document.getElementById('prev-btn');
     const nextBtn = document.getElementById('next-btn');
     const totalPages = $('#flipbook .page').length;
-    const clickSound = document.getElementById('musicClickSound'); // Added here
+    const clickSound = document.getElementById('musicClickSound'); 
 
     let isMusicPlaying = false;
 
@@ -36,14 +36,14 @@ function initBook() {
         pages: totalPages,
         when: {
             turning: function (e, page, view) {
-                playPageSound(); 
+                playPageSound();
             },
             turned: function (e, page) {
                 pageCounter.textContent = `Page ${page} of ${totalPages}`;
             }
         }
     });
-    
+
     prevBtn.addEventListener('click', () => flipbook.turn('previous'));
     nextBtn.addEventListener('click', () => flipbook.turn('next'));
 
@@ -77,50 +77,26 @@ function initBook() {
         }
     });
 
-    // COMBINED MUSIC TOGGLE EVENT LISTENER
     musicToggle.addEventListener('click', () => {
-        // Play click sound
-        if (clickSound) {
-            clickSound.currentTime = 0; // Changed from 1.5 to start from beginning
-            clickSound.volume = 0.5;
-            clickSound.play().catch(() => { });
-        }
+    console.log('clicked');
 
-        // Toggle background music
-        if (isMusicPlaying) {
-            bgMusic.pause();
-            musicToggle.innerHTML = '<i class="fas fa-play"></i>';
-        } else {
-            bgMusic.volume = 0.3;
-            bgMusic.play().then(() => {
-                musicToggle.innerHTML = '<i class="fas fa-pause"></i>';
-            }).catch(e => {
-                console.log('Music play failed:', e);
-                // If auto-play fails, change icon back
-                musicToggle.innerHTML = '<i class="fas fa-play"></i>';
-                isMusicPlaying = false;
-            });
-        }
-        isMusicPlaying = !isMusicPlaying;
-    });
+    if (bgMusic.paused) {
+        bgMusic.play();
+        musicToggle.innerHTML = '<i class="fa-solid fa-pause"></i>';
+    } else {
+        bgMusic.pause();
+        musicToggle.innerHTML = '<i class="fa-solid fa-play"></i>';
+    }
+});
 
-    document.addEventListener('click', function initMusic() {
-        if (!isMusicPlaying) {
-            bgMusic.volume = 0.2;
-            bgMusic.play().then(() => {
-                isMusicPlaying = true;
-                musicToggle.innerHTML = '<i class="fas fa-pause"></i>';
-            }).catch(() => { });
-        }
-        document.removeEventListener('click', initMusic);
-    }, { once: true });
+
 
     pageCounter.textContent = `Page 1 of ${totalPages}`;
 
     function playPageSound() {
         if (pageSound) {
-            pageSound.currentTime = 1.5; 
-            pageSound.play().catch(() => { }); 
+            pageSound.currentTime = 1.5;
+            pageSound.play().catch(() => { });
         }
     }
 }
@@ -130,3 +106,22 @@ document.addEventListener('DOMContentLoaded', function () {
     initBook();
     console.log('❤️ Book ready! ❤️');
 });
+
+function checkDesktopPopup() {
+    const popup = document.getElementById('desktopPopup');
+    const closeBtn = document.getElementById('popupClose');
+
+    if (window.innerWidth <= 768) {
+        popup.classList.add('show');
+    }
+
+    closeBtn.addEventListener('click', () => {
+        popup.classList.remove('show');
+
+        setTimeout(() => {
+            popup.classList.add('show');
+        }, 150);
+    });
+}
+
+document.addEventListener('DOMContentLoaded', checkDesktopPopup);
